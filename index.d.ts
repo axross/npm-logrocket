@@ -1,13 +1,17 @@
+import { Action, Middleware } from 'redux';
+
 type InitOptions = {
   release?: string;
   console?: {
-    isEnabled?: boolean | {
-      log?: boolean;
-      info?: boolean;
-      debug?: boolean;
-      warn?: boolean;
-      error?: boolean;
-    };
+    isEnabled?:
+      | boolean
+      | {
+          log?: boolean;
+          info?: boolean;
+          debug?: boolean;
+          warn?: boolean;
+          error?: boolean;
+        };
   };
   network?: {
     isEnabled?: boolean;
@@ -20,6 +24,11 @@ type InitOptions = {
   shouldSendData?: () => boolean;
 };
 
+type ReduxMiddlewareConfig<S> = {
+  stateSanitizer?: (state: S) => Partial<S>;
+  actionSanitizer?: (action: Action) => Action | null;
+};
+
 interface LogRocket {
   init(appId: string, options?: InitOptions): void;
   identify(uid: string, json: {}): void;
@@ -29,6 +38,7 @@ interface LogRocket {
   debug(message?: any, ...optionalParams: any[]): void;
   error(message?: any, ...optionalParams: any[]): void;
   track(eventName: string): void;
+  reduxMiddleware<S>(config?: ReduxMiddlewareConfig<S>): Middleware;
 }
 
 declare const LogRocket: LogRocket;
