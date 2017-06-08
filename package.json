@@ -1,0 +1,19 @@
+{
+  "name": "@types/loglocket",
+  "version": "0.0.0",
+  "description": "TypeScript definitions for loglocket",
+  "contributors": [
+    {
+      "name": "Kohei Asai",
+      "url": "https://github.com/axross"
+    }
+  ],
+  "dependencies": {},
+  "license": "MIT",
+  "main": "",
+  "repository": {
+    "type": "git",
+    "url": "https://www.github.com/DefinitelyTyped/DefinitelyTyped.git"
+  },
+  "typeScriptVersion": "2.0"
+}
